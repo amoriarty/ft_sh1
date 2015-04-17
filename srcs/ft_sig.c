@@ -14,6 +14,12 @@
 
 void				ft_sig(int n)
 {
-	(void)n;
+	ft_putchar(EOL);
+	if (n == SIGSEGV)
+		ft_putstr_fd("42sh: Segmentation Fault.", 2);
+	if (n == SIGINT)
+		ft_putstr_fd("42sh: Interruption.", 2);
+	if (n == SIGTERM)
+		ft_putstr_fd("42sh: Terminated.", 2);
 	ft_putchar(EOL);
 }
