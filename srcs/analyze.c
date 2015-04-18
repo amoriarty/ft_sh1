@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 12:15:24 by alegent           #+#    #+#             */
-/*   Updated: 2015/04/14 17:09:25 by alegent          ###   ########.fr       */
+/*   Updated: 2015/04/18 13:04:12 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void				analyze(t_node *node, char *cmd)
 		ft_unsetenv(node, cmd);
 	else if (!ft_strncmp(cmd, "cd", 2))
 		ft_cd(node, cmd);
+	else if (!ft_strncmp(cmd, "pwd", 3))
+		ft_putendl(getcwd(NULL, 0));
 	else if (*cmd)
 		ft_sh(node, cmd);
 }
