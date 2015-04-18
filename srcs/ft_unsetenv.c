@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 13:53:18 by alegent           #+#    #+#             */
-/*   Updated: 2015/04/14 14:11:50 by alegent          ###   ########.fr       */
+/*   Updated: 2015/04/18 11:32:00 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void						ft_unsetenv(t_node *node, char *cmd)
 	t_env					*prec;
 	t_env					*t;
 
-	tmp = ft_strchr(cmd, ' ') + 1;
+	if (!(tmp = ft_strchr(cmd, ' ') + 1))
+		return ;
 	ft_setchar(node->v_env, tmp);
 	t = node->env;
 	prec = NULL;
