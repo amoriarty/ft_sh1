@@ -54,5 +54,6 @@ char					*gethome(t_env *env);
 void					process_error(char *cmd, char *error, int xit);
 void					multicmd(t_node *node, char *cmd);
 char					*trimcmd(char *cmd);
+void					verifcmd(char *s);
 
 #endif

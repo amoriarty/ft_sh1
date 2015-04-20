@@ -29,6 +29,7 @@ int							main(int ac, char **av, char **env)
 		signal(SIGSEGV, ft_sig);
 		cmd = NULL;
 		cmd = getcmd(cmd);
+		verifcmd(cmd);
 		if (ft_strchr(cmd, ';'))
 			multicmd(e, cmd);
 		else
