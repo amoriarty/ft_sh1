@@ -58,6 +58,6 @@ void							ft_sh(t_node *node, char *cmd)
 		else
 			path = findpath(node, ft_strsub(cmd, 0, ft_len(cmd, ' ')));
 		if (!path || execve(path, ft_strsplit(cmd, ' '), node->v_env) == ERROR)
-			process_error(cmd, "Commande not found.", TRUE);
+			process_error(cmd, "Command not found.", TRUE);
 	}
 }
