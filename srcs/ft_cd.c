@@ -81,7 +81,14 @@ void						ft_cd(t_node *node, char *cmd)
 {
 	char			*pwd;
 	char			*oldpwd;
+	char			**error;
 
+	error = ft_strsplit(cmd, ' ');
+	if (error[2])
+	{
+		process_error(NULL, "usage: cd [PATH]", FALSE);
+		return ;
+	}
 	oldpwd = getcwd(NULL, 0);
 	pwd = getnewpwd(node, oldpwd, cmd);
 	if (chdir(pwd) == ERROR)
