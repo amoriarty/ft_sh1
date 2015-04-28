@@ -26,7 +26,7 @@ int							main(int ac, char **av, char **env)
 		signal(SIGINT, ft_sig);
 		signal(SIGTERM, ft_sig);
 		signal(SIGHUP, ft_sig);
-		signal(SIGSEGV, ft_sig);
+//		signal(SIGSEGV, ft_sig);
 		cmd = NULL;
 		cmd = getcmd(cmd);
 		verifcmd(cmd);
