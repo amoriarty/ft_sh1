@@ -39,7 +39,8 @@ SRC_NAME= main.c \
 	  process_error.c \
 	  multicmd.c \
 	  trimcmd.c \
-	  verifcmd.c
+	  verifcmd.c \
+	  verifsplit.c
 SRC= $(addprefix $(SRC_PATH), $(SRC_NAME))
 
 #OBJ BLOCK

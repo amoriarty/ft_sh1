@@ -46,6 +46,7 @@ static char						*minimal(char *cmd)
 void							ft_sh(t_node *node, char *cmd)
 {
 	char						*path;
+	char						**split;
 	pid_t						pid;
 
 	pid = fork();
@@ -57,7 +58,9 @@ void							ft_sh(t_node *node, char *cmd)
 			path = minimal(ft_strchr(cmd, '/') + 1);
 		else
 			path = findpath(node, ft_strsub(cmd, 0, ft_len(cmd, ' ')));
-		if (!path || execve(path, ft_strsplit(cmd, ' '), node->v_env) == ERROR)
+		split = ft_strsplit(cmd, ' ');
+		verifsplit(node->env, split);
+		if (!path || execve(path, split, node->v_env) == ERROR)
 			process_error(cmd, "Command not found.", TRUE);
 	}
 }
