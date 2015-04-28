@@ -51,8 +51,10 @@ static void					facto(t_node *node, char *tmp)
 void						ft_unsetenv(t_node *node, char *cmd)
 {
 	char					*tmp;
+	char					**error;
 
-	if (!(tmp = ft_strchr(cmd, ' ')) || !(*(tmp++)) || !ft_isprint(*tmp))
+	if (!(tmp = ft_strchr(cmd, ' ')) || !(*(tmp++)) || !ft_isprint(*tmp)
+			|| ((error = ft_strsplit(tmp, ' ')) && error[1]))
 	{
 		process_error(NULL, "usage: unsetenv [VAR]", FALSE);
 		return ;
