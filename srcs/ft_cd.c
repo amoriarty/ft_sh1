@@ -43,6 +43,11 @@ static char					*getnewpwd(t_node *node, char *pwd, char *cmd)
 		return (gethome(node->env));
 	if (*(tmp + 1) == '~')
 		return (ft_strjoin(gethome(node->env), (tmp + 2)));
+	else if (!ft_strcmp(tmp + 1, "-"))
+	{
+		ft_bzero(ft_strrchr(pwd, '/'), ft_strlen(ft_strrchr(pwd, '/')));
+		return (pwd);
+	}
 	else if (*(tmp + 1) == '/')
 		return (ft_strdup(tmp + 1));
 	return (factopwd(pwd, tmp));
