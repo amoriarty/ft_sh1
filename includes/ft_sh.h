@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 10:46:47 by alegent           #+#    #+#             */
-/*   Updated: 2015/04/14 17:10:36 by alegent          ###   ########.fr       */
+/*   Updated: 2015/04/29 09:49:28 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <sys/stat.h>
+# define CANCEL "\033[0;m"
+# define GREEN "\033[0;32;40m"
 # define CLS 12
 
 typedef struct stat		t_stat;

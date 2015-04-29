@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 11:49:38 by alegent           #+#    #+#             */
-/*   Updated: 2015/04/14 12:01:36 by alegent          ###   ########.fr       */
+/*   Updated: 2015/04/29 09:49:53 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char						*getcmd(char *cmd)
 {
 	char					*next;
 
-	ft_putstr((!cmd) ? "$> " : "> ");
+	ft_putcolor((!cmd) ? "$> " : "> ", GREEN);
 	if ((get_next_line(0, &next) == 0))
 		exit(EXIT_SUCCESS);
 	if (next[ft_strlen(next) - 1] == '\\')
