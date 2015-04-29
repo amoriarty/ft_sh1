@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/18 13:15:24 by alegent           #+#    #+#             */
-/*   Updated: 2015/04/18 13:15:44 by alegent          ###   ########.fr       */
+/*   Updated: 2015/04/29 11:07:47 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ char								*trimcmd(char *cmd)
 {
 	int								i;
 	char							*new;
+	char							*tmp;
 	static int						begin;
 
 	i = 0;
+	tmp = NULL;
 	new = ft_strnew(ft_strlen(cmd) + 1);
 	while (*cmd && ft_isblank(*cmd))
 		cmd++;
@@ -29,7 +31,9 @@ char								*trimcmd(char *cmd)
 	while (*cmd && ft_isprint(*cmd))
 		new[i++] = *(cmd++);
 	if (*cmd)
+	{
 		return (ft_strjoin(new, trimcmd(cmd)));
+	}
 	begin = 0;
 	return (new);
 }

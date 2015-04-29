@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 11:49:38 by alegent           #+#    #+#             */
-/*   Updated: 2015/04/29 10:33:55 by alegent          ###   ########.fr       */
+/*   Updated: 2015/04/29 10:57:48 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ char						*getcmd(char *cmd)
 		next[ft_strlen(next) - 1] = 0;
 		return (getcmd(ft_strjoin(cmd, next)));
 	}
-	return (ft_strjoin(cmd, next));
+	return ((cmd) ? ft_strjoin(cmd, next) : next);
 }

@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 10:49:16 by alegent           #+#    #+#             */
-/*   Updated: 2015/04/14 14:13:19 by alegent          ###   ########.fr       */
+/*   Updated: 2015/04/29 10:58:43 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ int							main(int ac, char **av, char **env)
 		signal(SIGINT, ft_sig);
 		signal(SIGTERM, ft_sig);
 		signal(SIGHUP, ft_sig);
-//		signal(SIGSEGV, ft_sig);
-		cmd = NULL;
-		cmd = getcmd(cmd);
+		signal(SIGSEGV, ft_sig);
+		cmd = getcmd(NULL);
 		verifcmd(cmd);
 		if (ft_strchr(cmd, ';'))
 			multicmd(e, cmd);
 		else
 			analyze(e, trimcmd(cmd));
+		free(cmd);
 	}
 	return (EXIT_SUCCESS);
 }

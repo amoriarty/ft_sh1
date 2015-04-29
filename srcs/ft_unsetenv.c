@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 13:53:18 by alegent           #+#    #+#             */
-/*   Updated: 2015/04/18 13:20:54 by alegent          ###   ########.fr       */
+/*   Updated: 2015/04/29 11:44:18 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void					ft_setchar(char **env, char *cmd)
 	while (!ft_strncmp(env[i], cmd, ft_len(cmd, '=')))
 		i++;
 	ft_bzero(env[i], ft_strlen(env[i]));
+	env[i] = env[i + 1];
 }
 
 static void					facto(t_node *node, char *tmp)
