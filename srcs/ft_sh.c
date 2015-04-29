@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 12:17:35 by alegent           #+#    #+#             */
-/*   Updated: 2015/04/14 13:51:26 by alegent          ###   ########.fr       */
+/*   Updated: 2015/04/29 10:30:39 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ void							ft_sh(t_node *node, char *cmd)
 		verifsplit(node->env, split);
 		if (!path || execve(path, split, node->v_env) == ERROR)
 			process_error(cmd, "Command not found.", TRUE);
+		free(cmd);
 	}
 }

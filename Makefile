@@ -6,7 +6,7 @@
 #    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/04 09:54:26 by alegent           #+#    #+#              #
-#    Updated: 2015/04/14 17:10:23 by alegent          ###   ########.fr        #
+#    Updated: 2015/04/29 10:19:27 by alegent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ SRC_NAME= main.c \
 	  multicmd.c \
 	  trimcmd.c \
 	  verifcmd.c \
-	  verifsplit.c
+	  verifsplit.c \
+	  getoldpwd.c
 SRC= $(addprefix $(SRC_PATH), $(SRC_NAME))
 
 #OBJ BLOCK

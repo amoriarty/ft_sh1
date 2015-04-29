@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 10:46:47 by alegent           #+#    #+#             */
-/*   Updated: 2015/04/29 09:49:28 by alegent          ###   ########.fr       */
+/*   Updated: 2015/04/29 10:19:15 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ void					multicmd(t_node *node, char *cmd);
 char					*trimcmd(char *cmd);
 void					verifcmd(char *s);
 void					verifsplit(t_env *e, char **split);
+char					*getoldpwd(t_node *node);
 
 #endif

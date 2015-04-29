@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getcmd.c                                           :+:      :+:    :+:   */
+/*   getoldpwd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/04/14 11:49:38 by alegent           #+#    #+#             */
-/*   Updated: 2015/04/29 10:33:55 by alegent          ###   ########.fr       */
+/*   Created: 2015/04/29 10:17:03 by alegent           #+#    #+#             */
+/*   Updated: 2015/04/29 10:18:53 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
 
-char						*getcmd(char *cmd)
+char					*getoldpwd(t_node *node)
 {
-	char					*next;
+	t_env				*tmp;
 
-	ft_putcolor((!cmd) ? "$> " : "> ", GREEN);
-	if ((get_next_line(0, &next) == 0))
-		exit(EXIT_SUCCESS);
-	if (next[ft_strlen(next) - 1] == '\\')
+	tmp = node->env;
+	while (tmp)
 	{
-		next[ft_strlen(next) - 1] = 0;
-		return (getcmd(ft_strjoin(cmd, next)));
+		if (!ft_strncmp(tmp->entry, "OLDPWD=", 7))
+			return (ft_strchr(tmp->entry, '=') + 1);
+		tmp = tmp->next;
 	}
-	return (ft_strjoin(cmd, next));
+	return (NULL);
 }

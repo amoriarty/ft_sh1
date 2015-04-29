@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 16:17:55 by alegent           #+#    #+#             */
-/*   Updated: 2015/04/18 13:13:37 by alegent          ###   ########.fr       */
+/*   Updated: 2015/04/29 10:16:43 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,7 @@ static char					*getnewpwd(t_node *node, char *pwd, char *cmd)
 	if (*(tmp + 1) == '~')
 		return (ft_strjoin(gethome(node->env), (tmp + 2)));
 	else if (!ft_strcmp(tmp + 1, "-"))
-	{
-		ft_bzero(ft_strrchr(pwd, '/'), ft_strlen(ft_strrchr(pwd, '/')));
-		return (pwd);
-	}
+		return (getoldpwd(node));
 	else if (*(tmp + 1) == '/')
 		return (ft_strdup(tmp + 1));
 	return (factopwd(pwd, tmp));
