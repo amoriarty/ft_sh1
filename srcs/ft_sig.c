@@ -18,8 +18,11 @@ void				ft_sig(int n)
 	if (n == SIGSEGV)
 		ft_putstr_fd("42sh: Segmentation Fault.", 2);
 	if (n == SIGINT)
-		ft_putstr_fd("42sh: Interruption.", 2);
+	{
+		ft_putstr_fd("42sh: Interruption.\n", 2);
+		ft_putcolor("$>", GREEN);
+	}
 	if (n == SIGTERM)
 		ft_putstr_fd("42sh: Terminated.", 2);
-	ft_putchar(EOL);
+	ft_putchar((n == SIGINT) ? ' ' : EOL);
 }

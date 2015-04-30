@@ -16,11 +16,9 @@ char								*trimcmd(char *cmd)
 {
 	int								i;
 	char							*new;
-	char							*tmp;
 	static int						begin;
 
 	i = 0;
-	tmp = NULL;
 	new = ft_strnew(ft_strlen(cmd) + 1);
 	while (*cmd && ft_isblank(*cmd))
 		cmd++;
@@ -31,9 +29,7 @@ char								*trimcmd(char *cmd)
 	while (*cmd && ft_isprint(*cmd))
 		new[i++] = *(cmd++);
 	if (*cmd)
-	{
 		return (ft_strjoin(new, trimcmd(cmd)));
-	}
 	begin = 0;
 	return (new);
 }
