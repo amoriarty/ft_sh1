@@ -40,9 +40,9 @@ static char					*getnewpwd(t_node *node, char *pwd, char *cmd)
 	char			*tmp;
 
 	if (!(tmp = ft_strchr(cmd, ' ')))
-		return (gethome(node->env));
+		return (node->home);
 	if (*(tmp + 1) == '~')
-		return (ft_strjoin(gethome(node->env), (tmp + 2)));
+		return (ft_strjoin(node->home, (tmp + 2)));
 	else if (!ft_strcmp(tmp + 1, "-"))
 		return (getoldpwd(node));
 	else if (*(tmp + 1) == '/')
@@ -80,9 +80,11 @@ void						ft_cd(t_node *node, char *cmd)
 	error = ft_strsplit(cmd, ' ');
 	if (error[2])
 	{
+		ft_free(error);
 		process_error(NULL, "usage: cd [PATH]", FALSE);
 		return ;
 	}
+	ft_free(error);
 	oldpwd = getcwd(NULL, 0);
 	pwd = getnewpwd(node, oldpwd, cmd);
 	if (chdir(pwd) == ERROR)

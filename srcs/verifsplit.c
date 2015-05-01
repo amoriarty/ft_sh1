@@ -12,7 +12,7 @@
 
 #include "ft_sh.h"
 
-void			verifsplit(t_env *e, char **split)
+void			verifsplit(t_node *node, char **split)
 {
 	int		x;
 	int		y;
@@ -24,7 +24,7 @@ void			verifsplit(t_env *e, char **split)
 		while (split[y][++x])
 		{
 			if (split[y][x] == '~')
-				split[y] = ft_strjoin(gethome(e), split[y] + x + 1);
+				split[y] = ft_strjoin(node->home, split[y] + x + 1);
 		}
 	}
 }

@@ -29,6 +29,7 @@ struct					s_node
 {
 	t_env				*env;
 	t_env				*path;
+	char				*home;
 };
 
 struct					s_env
@@ -56,7 +57,7 @@ void					process_error(char *cmd, char *error, int xit);
 void					multicmd(t_node *node, char *cmd);
 char					*trimcmd(char *cmd);
 void					verifcmd(char *s);
-void					verifsplit(t_env *e, char **split);
+void					verifsplit(t_node *node, char **split);
 char					*getoldpwd(t_node *node);
 int					lstlen(t_env *e);
 char					**createenv(t_node *node);

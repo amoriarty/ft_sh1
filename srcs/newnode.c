@@ -19,6 +19,7 @@ t_node						*newnode(char **env)
 	if (!(new = (t_node *)malloc(sizeof(t_node))))
 		ft_puterror("42sh", "Not enought RAM space is available");
 	new->env = ft_getenv(env);
+	new->home = gethome(new->env);
 	new->path = getpath(new->env);
 	return (new);
 }

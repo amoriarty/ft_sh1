@@ -61,7 +61,7 @@ void							ft_sh(t_node *node, char *cmd)
 		else
 			path = findpath(node, ft_strsub(cmd, 0, ft_len(cmd, ' ')));
 		split = ft_strsplit(cmd, ' ');
-		verifsplit(node->env, split);
+		verifsplit(node, split);
 		if (!path || execve(path, split, (env = createenv(node))) == ERROR)
 			process_error(cmd, "Command not found.", TRUE);
 		ft_free(split);
