@@ -12,17 +12,6 @@
 
 #include "ft_sh.h"
 
-static void					ft_setchar(char **env, char *cmd)
-{
-	int						i;
-
-	i = 0;
-	while (!ft_strncmp(env[i], cmd, ft_len(cmd, '=')))
-		i++;
-	ft_bzero(env[i], ft_strlen(env[i]));
-	env[i] = env[i + 1];
-}
-
 static void					facto(t_node *node, char *tmp)
 {
 	t_env					*t;
@@ -34,13 +23,11 @@ static void					facto(t_node *node, char *tmp)
 	{
 		if (!prec && !ft_strncmp(t->entry, tmp, ft_len(tmp, '=')))
 		{
-			node->path = (!ft_strncmp(t->entry, "PATH", 4)) ? NULL : node->path;
 			node->env = node->env->next;
 			return ;
 		}
 		if (prec && !ft_strncmp(t->entry, tmp, ft_len(tmp, '=')))
 		{
-			node->path = (!ft_strncmp(t->entry, "PATH", 4)) ? NULL : node->path;
 			prec->next = t->next;
 			return ;
 		}
@@ -60,6 +47,5 @@ void						ft_unsetenv(t_node *node, char *cmd)
 		process_error(NULL, "usage: unsetenv [VAR]", FALSE);
 		return ;
 	}
-	ft_setchar(node->v_env, tmp);
 	facto(node, tmp);
 }

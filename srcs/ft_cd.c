@@ -50,20 +50,6 @@ static char					*getnewpwd(t_node *node, char *pwd, char *cmd)
 	return (factopwd(pwd, tmp));
 }
 
-static void					setchar(char **env, char *pwd, char *oldpwd)
-{
-	int				i;
-
-	i = -1;
-	while (env[++i])
-	{
-		if (!ft_strncmp(env[i], "PWD", 3))
-			env[i] = ft_strjoin("PWD=", pwd);
-		if (!ft_strncmp(env[i], "OLDPWD", 6))
-			env[i] = ft_strjoin("OLDPWD=", oldpwd);
-	}
-}
-
 static void					sete(t_env *env, char *pwd, char *oldpwd)
 {
 	t_env			*t;
@@ -72,9 +58,15 @@ static void					sete(t_env *env, char *pwd, char *oldpwd)
 	while (t)
 	{
 		if (!ft_strncmp(t->entry, "PWD", 3))
+		{
+			free(t->entry);
 			t->entry = ft_strjoin("PWD=", pwd);
+		}
 		if (!ft_strncmp(t->entry, "OLDPWD", 6))
+		{
+			free(t->entry);
 			t->entry = ft_strjoin("OLDPWD=", oldpwd);
+		}
 		t = t->next;
 	}
 }
@@ -98,6 +90,5 @@ void						ft_cd(t_node *node, char *cmd)
 		process_error(pwd, "No such directory.", FALSE);
 		return ;
 	}
-	setchar(node->v_env, pwd, oldpwd);
 	sete(node->env, pwd, oldpwd);
 }

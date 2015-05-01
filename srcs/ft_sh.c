@@ -14,23 +14,24 @@
 
 static char						*findpath(t_node *node, char *cmd)
 {
-	int							i;
 	char						*tmp;
+	t_env						*path;
 
-	i = -1;
 	tmp = NULL;
-	while (node->path && node->path[++i])
+	path = node->path;
+	while (path)
 	{
-		tmp = ft_strjoin(ft_strjoin(node->path[i], "/"), cmd);
+		tmp = ft_strjoin(ft_strjoin(path->entry, "/"), cmd);
 		if (!access(tmp, F_OK) && !access(tmp, X_OK))
 			return (tmp);
 		if (!access(tmp, F_OK) && access(tmp, X_OK))
 			process_error(cmd, "Permission denied.", TRUE);
+		path = path->next;
 	}
 	return (NULL);
 }
 
-static char						*minimal(char *cmd)
+static char						*currentdir(char *cmd)
 {
 	char						*path;
 
@@ -46,6 +47,7 @@ static char						*minimal(char *cmd)
 void							ft_sh(t_node *node, char *cmd)
 {
 	char						*path;
+	char						**env;
 	char						**split;
 	pid_t						pid;
 
@@ -55,12 +57,14 @@ void							ft_sh(t_node *node, char *cmd)
 	if (pid == 0)
 	{
 		if (cmd[0] == '.')
-			path = minimal(ft_strchr(cmd, '/') + 1);
+			path = currentdir(ft_strchr(cmd, '/') + 1);
 		else
 			path = findpath(node, ft_strsub(cmd, 0, ft_len(cmd, ' ')));
 		split = ft_strsplit(cmd, ' ');
 		verifsplit(node->env, split);
-		if (!path || execve(path, split, node->v_env) == ERROR)
+		if (!path || execve(path, split, (env = createenv(node))) == ERROR)
 			process_error(cmd, "Command not found.", TRUE);
+		ft_free(split);
+		ft_free(env);
 	}
 }

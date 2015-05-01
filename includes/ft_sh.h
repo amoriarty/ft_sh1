@@ -27,9 +27,8 @@ typedef struct s_env	t_env;
 
 struct					s_node
 {
-	char				**v_env;
-	char				**path;
 	t_env				*env;
+	t_env				*path;
 };
 
 struct					s_env
@@ -41,7 +40,7 @@ struct					s_env
 t_node					*newnode(char **env);
 t_env					*newenv(void);
 t_env					*insertenv(t_env *begin, char *entry);
-char					**getpath(char **env);
+t_env					*getpath(t_env *env);
 t_env					*ft_getenv(char **env);
 void					ft_env(t_env *env);
 char					*getcmd(char *cmd);
@@ -59,5 +58,8 @@ char					*trimcmd(char *cmd);
 void					verifcmd(char *s);
 void					verifsplit(t_env *e, char **split);
 char					*getoldpwd(t_node *node);
+int					lstlen(t_env *e);
+char					**createenv(t_node *node);
+void					ft_free(char **f);
 
 #endif

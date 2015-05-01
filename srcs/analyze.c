@@ -20,7 +20,7 @@ void				analyze(t_node *node, char *cmd)
 		exit(EXIT_SUCCESS);
 	else if (!ft_strncmp(cmd, "env", 3))
 		ft_env(node->env);
-	else if (!ft_strncmp(cmd, "setenv", 6))
+	else if (!ft_strncmp(cmd, "setenv ", 7))
 		ft_setenv(node, cmd);
 	else if (!ft_strncmp(cmd, "unsetenv", 8))
 		ft_unsetenv(node, cmd);

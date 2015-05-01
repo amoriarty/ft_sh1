@@ -12,15 +12,28 @@
 
 #include "ft_sh.h"
 
-char							**getpath(char **env)
+static t_env						*ft_getpath(char **path)
 {
-	int							i;
+	int						i;
+	t_env						*new;
 
 	i = -1;
-	while (env[++i])
+	new = NULL;
+	while (path[++i])
+		new = insertenv(new, path[i]);
+	return (new);
+}
+
+t_env							*getpath(t_env *env)
+{
+	t_env						*tmp;
+
+	tmp = env;
+	while (tmp)
 	{
-		if (!ft_strncmp(env[i], "PATH", 4))
-			return (ft_strsplit(ft_strchr(env[i], '=') + 1, ':'));
+		if (!ft_strncmp(tmp->entry, "PATH=", 5))
+			return (ft_getpath(ft_strsplit(ft_strchr(tmp->entry, '=') + 1, ':')));
+		tmp = tmp->next;
 	}
 	return (NULL);
 }

@@ -41,7 +41,10 @@ SRC_NAME= main.c \
 	  trimcmd.c \
 	  verifcmd.c \
 	  verifsplit.c \
-	  getoldpwd.c
+	  getoldpwd.c \
+	  lstlen.c \
+	  createenv.c \
+	  ft_free.c
 SRC= $(addprefix $(SRC_PATH), $(SRC_NAME))
 
 #OBJ BLOCK
