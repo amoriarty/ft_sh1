@@ -35,16 +35,23 @@ static void					facto(t_node *node, char *tmp)
 		prec = t;
 		t = t->next;
 	}
+	process_error(tmp, "variable not found.", FALSE);
 }
 
 void						ft_unsetenv(t_node *node, char *cmd)
 {
 	char					*tmp;
+	char					**error;
 
-	if (!(tmp = ft_strchr(cmd, ' ')) || !(++tmp) || !(*tmp) || !ft_isprint(*tmp))
+	error = NULL;
+	if (!(tmp = ft_strchr(cmd, ' ')) || !(++tmp) || !(*tmp) || !ft_isprint(*tmp)
+			|| ((error = ft_strsplit(tmp, ' ')) && error[1]))
 	{
+		if (error)
+			ft_free(error);
 		process_error(NULL, "usage: unsetenv [VAR]", FALSE);
 		return ;
 	}
+	ft_free(error);
 	facto(node, tmp);
 }
