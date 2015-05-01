@@ -29,6 +29,8 @@ int							main(int ac, char **av, char **env)
 		//signal(SIGSEGV, ft_sig);
 		cmd = getcmd(NULL);
 		verifcmd(cmd);
+		if (!ft_strncmp(cmd, "ls", 2))
+			cmd = ft_strjoin(cmd, " --color=tty");
 		if (ft_strchr(cmd, ';'))
 			multicmd(e, cmd);
 		else
