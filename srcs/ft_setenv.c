@@ -15,10 +15,15 @@
 void				ft_setenv(t_node *node, char *cmd)
 {
 	char			*tmp;
+	char			**error;
 	t_env			*t;
 
-	if (!(tmp = ft_strchr(cmd, ' ') + 1) || !ft_strchr(cmd, '='))
+	error = NULL;
+	if (!(tmp = ft_strchr(cmd, ' ') + 1) || !ft_strchr(cmd, '=')
+			|| ((error = ft_strsplit(tmp, ' ')) && error[1]))
 	{
+		if (error)
+			ft_free(error);
 		process_error(NULL, "usage: setenv [VAR=VALUE]", FALSE);
 		return ;
 	}
