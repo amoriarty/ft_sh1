@@ -24,6 +24,7 @@ static void					facto(t_node *node, char *tmp)
 		if (!prec && !ft_strncmp(t->entry, tmp, ft_len(tmp, '=')))
 		{
 			node->env = node->env->next;
+			t = node->env;
 			return ;
 		}
 		if (prec && !ft_strncmp(t->entry, tmp, ft_len(tmp, '=')))
@@ -39,15 +40,11 @@ static void					facto(t_node *node, char *tmp)
 void						ft_unsetenv(t_node *node, char *cmd)
 {
 	char					*tmp;
-	char					**error;
 
-	if (!(tmp = ft_strchr(cmd, ' ')) || !(*(tmp++)) || !ft_isprint(*tmp)
-			|| ((error = ft_strsplit(tmp, ' ')) && error[1]))
+	if (!(tmp = ft_strchr(cmd, ' ')) || !(++tmp) || !(*tmp) || !ft_isprint(*tmp))
 	{
-		ft_free(error);
 		process_error(NULL, "usage: unsetenv [VAR]", FALSE);
 		return ;
 	}
 	facto(node, tmp);
-	ft_free(error);
 }
