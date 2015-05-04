@@ -46,6 +46,7 @@ static char						*currentdir(char *cmd)
 
 void							ft_sh(t_node *node, char *cmd)
 {
+	char						*tmp;
 	char						*path;
 	char						**env;
 	char						**split;
@@ -58,6 +59,12 @@ void							ft_sh(t_node *node, char *cmd)
 	{
 		if (cmd[0] == '.')
 			path = currentdir(ft_strchr(cmd, '/') + 1);
+		else if (cmd[0] == '/')
+		{
+			path = ft_strdup(cmd);
+			if ((tmp = ft_strchr(path, ' ')))
+				ft_bzero(tmp, ft_strlen(tmp));
+		}
 		else
 			path = findpath(node, ft_strsub(cmd, 0, ft_len(cmd, ' ')));
 		split = ft_strsplit(cmd, ' ');
