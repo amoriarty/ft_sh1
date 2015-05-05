@@ -59,9 +59,10 @@ void							ft_sh(t_node *node, char *cmd)
 	{
 		if (cmd[0] == '.')
 			path = currentdir(ft_strchr(cmd, '/') + 1);
-		else if (cmd[0] == '/')
+		else if (cmd[0] == '/' || cmd[0] == '~')
 		{
-			path = ft_strdup(cmd);
+			path = (cmd[0] == '~') ? ft_strjoin(gethome(node->env),
+					ft_strchr(cmd, '~') + 1): ft_strdup(cmd);
 			if ((tmp = ft_strchr(path, ' ')))
 				ft_bzero(tmp, ft_strlen(tmp));
 		}
