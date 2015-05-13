@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 12:17:35 by alegent           #+#    #+#             */
-/*   Updated: 2015/04/29 11:07:20 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/13 13:56:19 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,35 +44,39 @@ static char						*currentdir(char *cmd)
 	return (NULL);
 }
 
-void							ft_sh(t_node *node, char *cmd)
+static void						ft_facto(t_node *node, char *cmd)
 {
 	char						*tmp;
 	char						*path;
 	char						**env;
 	char						**split;
+
+	if (cmd[0] == '.')
+		path = currentdir(ft_strchr(cmd, '/') + 1);
+	else if (cmd[0] == '/' || cmd[0] == '~')
+	{
+		path = (cmd[0] == '~') ? ft_strjoin(gethome(node->env),
+				ft_strchr(cmd, '~') + 1) : ft_strdup(cmd);
+		if ((tmp = ft_strchr(path, ' ')))
+			ft_bzero(tmp, ft_strlen(tmp));
+	}
+	else
+		path = findpath(node, ft_strsub(cmd, 0, ft_len(cmd, ' ')));
+	split = ft_strsplit(cmd, ' ');
+	verifsplit(node, split);
+	if (execve(path, split, (env = createenv(node))) == ERROR)
+		process_error(cmd, "Command not found.", TRUE);
+	ft_free(split);
+	ft_free(env);
+}
+
+void							ft_sh(t_node *node, char *cmd)
+{
 	pid_t						pid;
 
 	pid = fork();
 	if (pid > 0)
 		wait(NULL);
 	if (pid == 0)
-	{
-		if (cmd[0] == '.')
-			path = currentdir(ft_strchr(cmd, '/') + 1);
-		else if (cmd[0] == '/' || cmd[0] == '~')
-		{
-			path = (cmd[0] == '~') ? ft_strjoin(gethome(node->env),
-					ft_strchr(cmd, '~') + 1): ft_strdup(cmd);
-			if ((tmp = ft_strchr(path, ' ')))
-				ft_bzero(tmp, ft_strlen(tmp));
-		}
-		else
-			path = findpath(node, ft_strsub(cmd, 0, ft_len(cmd, ' ')));
-		split = ft_strsplit(cmd, ' ');
-		verifsplit(node, split);
-		if (!path || execve(path, split, (env = createenv(node))) == ERROR)
-			process_error(cmd, "Command not found.", TRUE);
-		ft_free(split);
-		ft_free(env);
-	}
+		ft_facto(node, cmd);
 }

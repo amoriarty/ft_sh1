@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 10:44:54 by alegent           #+#    #+#             */
-/*   Updated: 2015/04/14 10:50:23 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/13 13:49:16 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static t_env						*ft_getpath(char **path)
 {
-	int						i;
-	t_env						*new;
+	int								i;
+	t_env							*new;
 
 	i = -1;
 	new = NULL;
@@ -24,15 +24,19 @@ static t_env						*ft_getpath(char **path)
 	return (new);
 }
 
-t_env							*getpath(t_env *env)
+t_env								*getpath(t_env *env)
 {
-	t_env						*tmp;
+	t_env							*tmp;
+	char							**split;
 
 	tmp = env;
 	while (tmp)
 	{
 		if (!ft_strncmp(tmp->entry, "PATH=", 5))
-			return (ft_getpath(ft_strsplit(ft_strchr(tmp->entry, '=') + 1, ':')));
+		{
+			split = ft_strsplit(ft_strchr(tmp->entry, '=') + 1, ':');
+			return (ft_getpath(split));
+		}
 		tmp = tmp->next;
 	}
 	return (NULL);

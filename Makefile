@@ -6,7 +6,7 @@
 #    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/04 09:54:26 by alegent           #+#    #+#              #
-#    Updated: 2015/05/03 16:53:50 by alegent          ###   ########.fr        #
+#    Updated: 2015/05/13 13:56:43 by alegent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ INC= -I $(INC_LIB) -I $(INC_PATH)
 
 #Once again, don't forget to includes librairy that you use !
 LFT= libft
-LINK= git@github.com:amoriarty/libft.git
+LINK= https://github.com/amoriarty/libft.git
 LIB= -L libft/ -lft
 
 #FRAMEWORK BLOC
@@ -104,7 +104,7 @@ fclean: clean
 
 re: fclean all
 
-norme:
+norme: $(LFT)
 	@norminette $(INC_LIB)**.[ch]
 	@norminette $(SRC_PATH)**.[ch]
 	@norminette $(INC_PATH)**.[ch]
