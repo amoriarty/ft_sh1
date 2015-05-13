@@ -6,7 +6,7 @@
 #    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/04 09:54:26 by alegent           #+#    #+#              #
-#    Updated: 2015/05/13 16:08:05 by alegent          ###   ########.fr        #
+#    Updated: 2015/05/13 16:26:12 by alegent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 # specify project
 
 #Define name of program here
-NAME= ft_minishell2
+NAME= ft_minishell1
 
 #SRC BLOC
 # define all the .c file in the variable SRC NAME
