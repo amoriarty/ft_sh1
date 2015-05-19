@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_senv.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/05/19 10:15:22 by alegent           #+#    #+#             */
+/*   Updated: 2015/05/19 10:15:42 by alegent          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_sh.h"
 
-static t_bool				ft_verif(char *cmd)
+static t_bool							ft_verif(char *cmd)
 {
 	char				*tmp;
 
@@ -13,7 +25,7 @@ static t_bool				ft_verif(char *cmd)
 	return (SUCCESS);
 }
 
-void					ft_senv(t_lst *env, char *cmd)
+void									ft_senv(t_lst *env, char *cmd)
 {
 	char				*tmp;
 	t_lst				*lst;

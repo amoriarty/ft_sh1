@@ -1,16 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_tcmd.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/05/19 10:15:58 by alegent           #+#    #+#             */
+/*   Updated: 2015/05/19 10:16:39 by alegent          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_sh.h"
 
-char						*ft_tcmd(char *cmd)
+char									*ft_tcmd(char *cmd)
 {
-	int					i;
-	int					x;
-	char					*new;
-	static int				begin;
+	int									i;
+	int									x;
+	char								*new;
+	static int							begin;
 
-	i = -1;
+	i = 0;
 	x = 0;
 	new = ft_strnew(ft_strlen(cmd) + 1);
-	while (cmd[++i] && ft_isblank(cmd[i]));
+	while (cmd[i] && ft_isblank(cmd[i]))
+		i++;
 	(begin) ? new[x++] = ' ' : begin++;
 	while (cmd[i] && ft_isprint(cmd[i]))
 		new[x++] = cmd[i++];

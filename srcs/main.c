@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/05/19 10:18:41 by alegent           #+#    #+#             */
+/*   Updated: 2015/05/19 10:18:53 by alegent          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_sh.h"
 
-int						main(int ac, char **av, char **env)
+int										main(int ac, char **av, char **env)
 {
-	t_sh					*shell;
-	char					*cmd;
+	t_sh								*shell;
+	char								*cmd;
 
 	(void)av;
 	cmd = NULL;

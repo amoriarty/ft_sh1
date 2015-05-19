@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_gpath.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/05/19 10:12:40 by alegent           #+#    #+#             */
+/*   Updated: 2015/05/19 10:13:03 by alegent          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_sh.h"
 
 static char				*ft_fpath(t_sh *shell, char *cmd)
@@ -24,7 +36,8 @@ char					*ft_gpath(t_sh *shell, char *cmd)
 	if (cmd[0] == '.' || cmd[0] == '~' || cmd[0] == '/')
 	{
 		if (cmd[0] == '.')
-			path = ft_strjoin(ft_strjoin(getcwd(NULL, 0), "/"), ft_strchr(cmd, '/') + 1);
+			path = ft_strjoin(
+					ft_strjoin(getcwd(NULL, 0), "/"), ft_strchr(cmd, '/') + 1);
 		if (cmd[0] == '~')
 			cmd = ft_strjoin(shell->home, cmd);
 		if (cmd[0] == '/')

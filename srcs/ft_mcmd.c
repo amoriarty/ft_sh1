@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_mcmd.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/05/19 10:14:45 by alegent           #+#    #+#             */
+/*   Updated: 2015/05/19 10:14:55 by alegent          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_sh.h"
 
-void						ft_mcmd(t_sh *shell, char *cmd)
+void								ft_mcmd(t_sh *shell, char *cmd)
 {
-	int					i;
-	char					**split;
+	int								i;
+	char							**split;
 
 	i = -1;
 	split = ft_strsplit(cmd, ';');

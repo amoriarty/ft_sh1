@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_cd.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/05/19 10:09:18 by alegent           #+#    #+#             */
+/*   Updated: 2015/05/19 10:10:02 by alegent          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_sh.h"
 
-static t_bool					ft_verif(char *cmd)
+static t_bool							ft_verif(char *cmd)
 {
 	if (ft_strchr(ft_strchr(cmd, ' ') + 1, ' '))
 	{
@@ -10,10 +22,10 @@ static t_bool					ft_verif(char *cmd)
 	return (SUCCESS);
 }
 
-static char					*ft_fpwd(char *cmd)
+static char								*ft_fpwd(char *cmd)
 {
-	char					*pwd;
-	char					*tmp;
+	char								*pwd;
+	char								*tmp;
 
 	pwd = getcwd(NULL, 0);
 	while (*cmd)
@@ -36,7 +48,7 @@ static char					*ft_fpwd(char *cmd)
 	return (pwd);
 }
 
-static char					*ft_gpwd(t_sh *shell, char *cmd)
+static char								*ft_gpwd(t_sh *shell, char *cmd)
 {
 	if (!cmd)
 		return (shell->home);
@@ -50,10 +62,10 @@ static char					*ft_gpwd(t_sh *shell, char *cmd)
 	return (ft_fpwd(cmd));
 }
 
-void						ft_cd(t_sh *shell, char *cmd)
+void									ft_cd(t_sh *shell, char *cmd)
 {
-	char					*pwd;
-	char					*path;
+	char								*pwd;
+	char								*path;
 
 	if (ft_verif(cmd))
 	{

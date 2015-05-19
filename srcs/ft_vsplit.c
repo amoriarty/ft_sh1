@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_vsplit.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/05/19 10:18:23 by alegent           #+#    #+#             */
+/*   Updated: 2015/05/19 10:18:36 by alegent          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_sh.h"
 
-void					ft_vsplit(t_sh *shell, char **split)
+void								ft_vsplit(t_sh *shell, char **split)
 {
-	int				x;
-	int				y;
+	int								x;
+	int								y;
 
 	y = -1;
 	if (!split)
