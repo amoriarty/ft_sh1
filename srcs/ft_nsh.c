@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:15:13 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 10:15:14 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/19 10:55:53 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,21 @@ t_sh					*ft_nsh(char **env)
 	split = NULL;
 	if (!(new = (t_sh *)malloc(sizeof(t_sh))))
 		ft_sherror(NULL, TRUE);
-	new->env = ft_glst(env);
-	tmp = ft_genv(new->env, "PATH");
-	split = ft_strsplit(tmp, ':');
-	new->path = ft_glst(split);
-	new->home = ft_genv(new->env, "HOME");
-	free(tmp);
-	ft_fctab(split);
+	if (env)
+	{
+		new->env = ft_glst(env);
+		tmp = ft_genv(new->env, "PATH");
+		if ((split = ft_strsplit(tmp, ':')))
+			new->path = ft_glst(split);
+		new->home = ft_genv(new->env, "HOME");
+		free(tmp);
+		ft_fctab(split);
+	}
+	else
+	{
+		new->env = NULL;
+		new->path = NULL;
+		new->home = NULL;
+	}
 	return (new);
 }
