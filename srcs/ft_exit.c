@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vaccess.c                                       :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/19 10:17:55 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 12:13:24 by alegent          ###   ########.fr       */
+/*   Created: 2015/05/19 12:14:34 by alegent           #+#    #+#             */
+/*   Updated: 2015/05/19 12:20:34 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
 
-void					ft_vaccess(char *path)
+void									ft_exit(char *cmd)
 {
-	if (access(path, F_OK))
-		ft_sherror("Command not found.", TRUE);
-	if (!access(path, F_OK) && access(path, X_OK))
-		ft_sherror("Permission denied.", TRUE);
+	char								*tmp;
+	int									e;
+
+	tmp = NULL;
+	if (!ft_strcmp(cmd, "exit"))
+		exit(EXIT_SUCCESS);
+	else
+	{
+		tmp = ft_strchr(cmd, ' ') + 1;
+		e = ft_atoi(tmp);
+		if (!ft_strcmp(tmp, ft_itoa(e)))
+			exit(e);
+		else
+			ft_sherror("Exit can't return this value", FALSE);
+
+	}
 }

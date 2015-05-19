@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vaccess.c                                       :+:      :+:    :+:   */
+/*   ft_digitlen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/19 10:17:55 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 12:13:24 by alegent          ###   ########.fr       */
+/*   Created: 2014/12/16 09:25:41 by alegent           #+#    #+#             */
+/*   Updated: 2015/03/16 12:03:04 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sh.h"
+#include "libft.h"
 
-void					ft_vaccess(char *path)
+size_t					ft_digitlen(int n)
 {
-	if (access(path, F_OK))
-		ft_sherror("Command not found.", TRUE);
-	if (!access(path, F_OK) && access(path, X_OK))
-		ft_sherror("Permission denied.", TRUE);
+	size_t				res;
+
+	res = 0;
+	if (n < 0)
+	{
+		res++;
+		n *= -1;
+	}
+	if (n > 9)
+	{
+		res++;
+		return (res + ft_digitlen(n / 10));
+	}
+	res++;
+	return (res);
 }

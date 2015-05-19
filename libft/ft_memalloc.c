@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vaccess.c                                       :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alegent <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/19 10:17:55 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 12:13:24 by alegent          ###   ########.fr       */
+/*   Created: 2014/11/04 20:06:06 by alegent           #+#    #+#             */
+/*   Updated: 2015/02/23 11:28:50 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sh.h"
+#include "libft.h"
 
-void					ft_vaccess(char *path)
+void		*ft_memalloc(size_t size)
 {
-	if (access(path, F_OK))
-		ft_sherror("Command not found.", TRUE);
-	if (!access(path, F_OK) && access(path, X_OK))
-		ft_sherror("Permission denied.", TRUE);
+	void	*mem;
+
+	mem = (void *)malloc(sizeof(char) * size);
+	if (mem == NULL || size == 0)
+		return (NULL);
+	return (mem);
 }

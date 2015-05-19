@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vaccess.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/19 10:17:55 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 12:13:24 by alegent          ###   ########.fr       */
+/*   Created: 2014/11/26 14:28:05 by alegent           #+#    #+#             */
+/*   Updated: 2014/11/26 14:40:54 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sh.h"
+#include "libft.h"
 
-void					ft_vaccess(char *path)
+void				ft_lstadd(t_list **alst, t_list *new)
 {
-	if (access(path, F_OK))
-		ft_sherror("Command not found.", TRUE);
-	if (!access(path, F_OK) && access(path, X_OK))
-		ft_sherror("Permission denied.", TRUE);
+	new->next = *alst;
+	*alst = new;
 }

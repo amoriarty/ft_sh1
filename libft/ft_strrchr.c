@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vaccess.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alegent <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/19 10:17:55 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 12:13:24 by alegent          ###   ########.fr       */
+/*   Created: 2014/11/04 14:36:10 by alegent           #+#    #+#             */
+/*   Updated: 2015/01/03 17:03:56 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sh.h"
+#include "libft.h"
 
-void					ft_vaccess(char *path)
+char		*ft_strrchr(const char *s, int c)
 {
-	if (access(path, F_OK))
-		ft_sherror("Command not found.", TRUE);
-	if (!access(path, F_OK) && access(path, X_OK))
-		ft_sherror("Permission denied.", TRUE);
+	int		len;
+
+	len = ft_strlen(s);
+	while (len >= 0)
+	{
+		if (s[len] == c)
+			return ((char *)s + len);
+		len--;
+	}
+	return (NULL);
 }

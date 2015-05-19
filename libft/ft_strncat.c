@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vaccess.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/19 10:17:55 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 12:13:24 by alegent          ###   ########.fr       */
+/*   Created: 2014/11/13 13:57:41 by alegent           #+#    #+#             */
+/*   Updated: 2015/01/03 15:49:31 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sh.h"
+#include "libft.h"
 
-void					ft_vaccess(char *path)
+char		*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	if (access(path, F_OK))
-		ft_sherror("Command not found.", TRUE);
-	if (!access(path, F_OK) && access(path, X_OK))
-		ft_sherror("Permission denied.", TRUE);
+	unsigned int		i;
+	unsigned int		x;
+
+	i = 0;
+	x = 0;
+	while (s1[i] != '\0')
+		i++;
+	while (s2[x] != '\0' && x < n)
+	{
+		s1[i] = s2[x];
+		i++;
+		x++;
+	}
+	s1[i] = '\0';
+	return (s1);
 }

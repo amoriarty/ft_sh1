@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/03/04 09:54:26 by alegent           #+#    #+#              #
-#    Updated: 2015/05/19 16:26:13 by alegent          ###   ########.fr        #
+#    Created: 2015/02/13 12:17:39 by alegent           #+#    #+#              #
+#    Updated: 2015/02/17 10:44:38 by alegent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,40 +15,81 @@
 # specify project
 
 #Define name of program here
-NAME= ft_minishell1
+NAME= libft.a
 
 #SRC BLOC
 # define all the .c file in the variable SRC NAME
-SRC_PATH= srcs/
-SRC_NAME= main.c \
-	  ft_analyze.c \
-	  ft_cd.c \
-	  ft_cenv.c \
-	  ft_env.c \
-	  ft_exit.c \
-	  ft_fork.c \
-	  ft_fctab.c \
-	  ft_gcmd.c \
-	  ft_genv.c \
-	  ft_glst.c \
-	  ft_gpath.c \
-	  ft_handler.c \
-	  ft_inode.c \
-	  ft_len.c \
-	  ft_lstlen.c \
-	  ft_mcmd.c \
-	  ft_nlst.c \
-	  ft_nsh.c \
-	  ft_senv.c \
-	  ft_sherror.c \
-	  ft_tcmd.c \
-	  ft_uenv.c \
-	  ft_vaccess.c \
-	  ft_vcmd.c \
-	  ft_vsplit.c
+SRC_PATH= ./
+SRC_NAME= ft_atoi.c \
+		  ft_bzero.c \
+		  ft_digitlen.c \
+		  ft_isalnum.c \
+		  ft_isalpha.c \
+		  ft_isascii.c \
+		  ft_isdigit.c \
+		  ft_isprint.c \
+		  ft_isblank.c \
+		  ft_itoa.c \
+		  ft_lstadd.c \
+		  ft_lstdel.c \
+		  ft_lstdelete.c \
+		  ft_lstdelone.c \
+		  ft_lstend.c \
+		  ft_lstiter.c \
+		  ft_lstmap.c \
+		  ft_lstnew.c \
+		  ft_memalloc.c \
+		  ft_memccpy.c \
+		  ft_memchr.c \
+		  ft_memcmp.c \
+		  ft_memcpy.c \
+		  ft_memdel.c \
+		  ft_memmove.c \
+		  ft_memset.c \
+		  ft_putchar.c \
+		  ft_putchar_fd.c \
+		  ft_putcolor.c \
+		  ft_putcolor_fd.c \
+		  ft_putendl.c \
+		  ft_putendl_fd.c \
+		  ft_puterror.c \
+		  ft_perror.c \
+		  ft_putnbr.c \
+		  ft_putnbr_fd.c \
+		  ft_putstr.c \
+		  ft_putstr_fd.c \
+		  ft_strcat.c \
+		  ft_strchr.c \
+		  ft_strclr.c \
+		  ft_strcmp.c \
+		  ft_strcpy.c \
+		  ft_strdel.c \
+		  ft_strdup.c \
+		  ft_strequ.c \
+		  ft_striter.c \
+		  ft_striteri.c \
+		  ft_strjoin.c \
+		  ft_strlcat.c \
+		  ft_strlen.c \
+		  ft_strmap.c \
+		  ft_strmapi.c \
+		  ft_strncat.c \
+		  ft_strncmp.c \
+		  ft_strncpy.c \
+		  ft_strnequ.c \
+		  ft_strnew.c \
+		  ft_strnstr.c \
+		  ft_strrchr.c \
+		  ft_strsplit.c \
+		  ft_strstr.c \
+		  ft_strsub.c \
+		  ft_strtrim.c \
+		  ft_tolower.c \
+		  ft_toupper.c \
+		  get_next_line.c
 SRC= $(addprefix $(SRC_PATH), $(SRC_NAME))
 
-#OBJ BLOCK
+#OBJ BLOC
 #Do nothing here
 OBJ_PATH= obj/
 OBJ_NAME= $(SRC_NAME:.c=.o)
@@ -60,46 +101,39 @@ GCC= gcc -Wall -Wextra -Werror
 
 #INCLUDE BLOC
 #Don't forget to include the other librarie that yo use
-INC_LIB= libft/
-INC_PATH= includes/
+INC_LIB=
+INC_PATH= ./
 INC= -I $(INC_LIB) -I $(INC_PATH)
 
 #Once again, don't forget to includes librairy that you use !
-LFT= libft
-LINK= https://github.com/amoriarty/libft.git
-LIB= -L libft/ -lft
+LIB=
 
 #FRAMEWORK BLOC
 #Don't forget to add framework that you need !
 FRAMEWORK= 
 
-all: $(OGL) $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make -C $(LFT)
-	@$(GCC) $(OBJ) $(INC) $(LIB) $(FRAMEWORK) -o $(NAME)
+	@ar rc $(NAME) $(OBJ)
 	@echo "$(NAME) has been created."
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || echo "" 2> /dev/null
-	$(GCC) $(INC) -o $@ -c $<
+	$(GCC) -o $@ -c $<
 
 clean:
-	@make -C $(LFT) clean
 	@rm -rf $(OBJ)
 	@rm -rf $(OBJ_PATH)
 	@echo "$(NAME) objects files are deleted."
 
 fclean: clean
-	@make -C $(LFT) fclean
 	@rm -rf $(NAME)
-	@echo "$(NAME) is deleted."
+	@echo "$(NAME) are deleted."
 
 re: fclean all
 
 norme:
-	@norminette $(INC_LIB)**.[ch]
-	@norminette $(SRC_PATH)**.[ch]
-	@norminette $(INC_PATH)**.[ch]
+	@norminette $(INC_LIB)*.[ch]
 
 .PHONY: clean fclean re norme

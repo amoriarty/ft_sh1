@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:09:10 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 11:32:29 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/19 12:19:51 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void					ft_analyze(t_sh *shell, char *cmd)
 {
 	char				*pwd;
 
-	if (!ft_strcmp(cmd, "exit"))
-		exit(EXIT_SUCCESS);
+	if (!ft_strncmp(cmd, "exit", 4))
+		ft_exit(cmd);
 	else if (!ft_strcmp(cmd, "pwd"))
 	{
 		ft_putendl((pwd = getcwd(NULL, 0)));
