@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:16:54 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 11:26:17 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/19 11:33:16 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_bool							ft_verif(char *cmd)
 	return (SUCCESS);
 }
 
-void									ft_uenv(t_lst *env, char *cmd)
+void									ft_uenv(t_lst **env, char *cmd)
 {
 	char								*t;
 	t_lst								*prec;
@@ -32,14 +32,14 @@ void									ft_uenv(t_lst *env, char *cmd)
 
 	if (ft_verif(cmd))
 	{
-		tmp = env;
+		tmp = *env;
 		prec = NULL;
 		t = ft_strchr(cmd, ' ') + 1;
 		while (tmp)
 		{
 			if (!prec && !ft_strncmp(tmp->entry, t, ft_len(t, '=')))
 			{
-				env = env->next;
+				*env= (*env)->next;
 				return ;
 			}
 			if (prec && !ft_strncmp(tmp->entry, t, ft_len(t, '=')))
