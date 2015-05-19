@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:09:18 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 10:10:02 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/19 11:21:05 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void									ft_cd(t_sh *shell, char *cmd)
 			ft_sherror("No such directory.", FALSE);
 			return ;
 		}
-		ft_senv(shell->env, ft_strjoin("setenv OLDPWD=", pwd));
-		ft_senv(shell->env, ft_strjoin("setenv PWD=", path));
+		ft_senv((&(shell->env)), ft_strjoin("setenv OLDPWD=", pwd));
+		ft_senv((&(shell->env)), ft_strjoin("setenv PWD=", path));
 	}
 }

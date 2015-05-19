@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:15:22 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 10:15:42 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/19 11:21:19 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ static t_bool							ft_verif(char *cmd)
 	return (SUCCESS);
 }
 
-void									ft_senv(t_lst *env, char *cmd)
+void									ft_senv(t_lst **env, char *cmd)
 {
 	char				*tmp;
 	t_lst				*lst;
 
-	lst = env;
+	lst = *env;
 	if (ft_verif(cmd))
 	{
 		tmp = ft_strchr(cmd, ' ') + 1;
@@ -44,6 +44,6 @@ void									ft_senv(t_lst *env, char *cmd)
 			}
 			lst = lst->next;
 		}
-		ft_inode(&env, tmp);
+		ft_inode(env, tmp);
 	}
 }

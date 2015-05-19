@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:09:10 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 10:09:12 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/19 11:20:19 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void					ft_analyze(t_sh *shell, char *cmd)
 	else if (!ft_strcmp(cmd, "env"))
 		ft_env(shell->env);
 	else if (!ft_strncmp(cmd, "setenv", 6))
-		ft_senv(shell->env, cmd);
+		ft_senv((&(shell->env)), cmd);
 	else if (!ft_strncmp(cmd, "unsetenv", 8))
 		ft_uenv(shell->env, cmd);
 	else if (!ft_strcmp(cmd, "cd"))
