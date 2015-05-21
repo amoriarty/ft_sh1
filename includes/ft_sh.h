@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 10:46:47 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/21 16:26:15 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/21 17:31:33 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void					ft_vcmd(char *cmd);
 void					ft_fctab(char **tab);
 void					ft_mcmd(t_sh *shell, char *cmd);
 void					ft_fork(t_sh *shell, char *cmd);
-void					ft_vaccess(char *path);
+void					ft_vaccess(char *cmd, char *path);
 void					ft_vsplit(t_sh *shell, char **split);
 void					ft_analyze(t_sh *shell, char *cmd);
-void					ft_sherror(char *error, t_bool i);
+void					ft_sherror(char *error, char *cmd, t_bool i);
 void					ft_env(t_lst *env);
 void					ft_senv(t_sh *shell, char *cmd);
 void					ft_uenv(t_sh *shell, char *cmd);

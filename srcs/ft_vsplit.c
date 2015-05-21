@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:18:23 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 10:18:36 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/21 16:41:12 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void								ft_vsplit(t_sh *shell, char **split)
 
 	y = -1;
 	if (!split)
-		ft_sherror(NULL, TRUE);
+		ft_sherror(NULL, NULL, TRUE);
 	while (split[++y])
 	{
 		x = -1;

@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:15:13 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 10:55:53 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/21 16:39:18 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_sh					*ft_nsh(char **env)
 	tmp = NULL;
 	split = NULL;
 	if (!(new = (t_sh *)malloc(sizeof(t_sh))))
-		ft_sherror(NULL, TRUE);
+		ft_sherror(NULL, NULL, TRUE);
 	if (env)
 	{
 		new->env = ft_glst(env);

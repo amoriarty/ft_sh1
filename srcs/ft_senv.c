@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:15:22 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/21 16:32:09 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/21 16:39:35 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_bool					ft_verif(char *cmd)
 	if (!(tmp = ft_strchr(cmd, ' ')) || !ft_strchr(cmd, '=')
 			|| ft_strchr(tmp + 1, ' '))
 	{
-		ft_sherror("usage: setenv [VAR=VALUE]", FALSE);
+		ft_sherror("usage: setenv [VAR=VALUE]", NULL, FALSE);
 		return (FAILURE);
 	}
 	return (SUCCESS);

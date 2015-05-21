@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:09:18 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/21 13:08:01 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/21 17:27:00 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static t_bool							ft_verif(char *cmd)
 {
 	if (ft_strchr(ft_strchr(cmd, ' ') + 1, ' '))
 	{
-		ft_sherror("usage: cd [PATH]", FALSE);
+		ft_sherror("usage: cd [PATH]", NULL, FALSE);
 		return (FAILURE);
 	}
 	return (SUCCESS);
@@ -73,7 +73,7 @@ void									ft_cd(t_sh *shell, char *cmd)
 		path = ft_gpwd(shell, ft_strchr(cmd, ' '));
 		if (chdir(path) == ERROR)
 		{
-			ft_sherror("No such directory.", FALSE);
+			ft_sherror("No such directory.", ft_strchr(cmd, ' ') + 1, FALSE);
 			return ;
 		}
 		ft_senv(shell, ft_strjoin("setenv OLDPWD=", pwd));

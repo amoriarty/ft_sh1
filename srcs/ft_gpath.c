@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:12:40 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 10:13:03 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/21 17:32:50 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ char					*ft_gpath(t_sh *shell, char *cmd)
 	}
 	else
 		path = ft_fpath(shell, ft_strsub(cmd, 0, ft_len(cmd, ' ')));
-	ft_vaccess(path);
+	ft_vaccess(cmd, path);
 	return (path);
 }

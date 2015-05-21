@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:18:41 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/21 16:18:33 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/21 16:35:38 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int										main(int ac, char **av, char **env)
 	(void)av;
 	cmd = NULL;
 	if (ac != 1)
-		ft_sherror("please don't feed me !", TRUE);
+		ft_sherror("please don't feed me !", NULL, TRUE);
 	shell = ft_nsh(env);
 	ft_handler();
 	while (42)

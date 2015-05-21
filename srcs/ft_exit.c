@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 12:14:34 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 12:20:34 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/21 16:37:07 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ void					ft_exit(char *cmd)
 		if (!ft_strcmp(tmp, ft_itoa(e)))
 			exit(e);
 		else
-			ft_sherror("Exit can't return this value", FALSE);
+			ft_sherror("Exit can't return this value", tmp, FALSE);
 	}
 }
