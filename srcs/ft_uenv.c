@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:16:54 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/21 13:03:50 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/21 16:26:59 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void						ft_uenv(t_sh *shell, char *cmd)
 		prec = NULL;
 		t = ft_strchr(cmd, ' ') + 1;
 		if (!ft_strncmp(t, "PATH", 4))
-			ft_flst(shell->path);
+			ft_flst((&(shell->path)));
 		while (tmp)
 		{
 			if (!prec && !ft_strncmp(tmp->entry, t, ft_len(t, '=')))

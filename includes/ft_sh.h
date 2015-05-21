@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 10:46:47 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/21 13:02:08 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/21 16:26:15 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ size_t					ft_lstlen(t_lst *lst);
 t_sh					*ft_nsh(char **env);
 t_lst					*ft_nlst(char *entry);
 t_lst					*ft_glst(char **from);
-void					ft_flst(t_lst *lst);
+void					ft_flst(t_lst **lst);
 
 #endif

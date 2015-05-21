@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:15:22 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/21 13:12:01 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/21 16:32:09 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ void						ft_senv(t_sh *shell, char *cmd)
 	{
 		tmp = ft_strchr(cmd, ' ') + 1;
 		if (!ft_strncmp(tmp, "PATH=", 5))
+		{
+			ft_flst((&(shell->path)));
 			shell->path = ft_glst(ft_strsplit(ft_strchr(tmp, '=') + 1, ':'));
+		}
 		while (lst)
 		{
 			if (!ft_strncmp(lst->entry, tmp, ft_len(tmp, '=')))
