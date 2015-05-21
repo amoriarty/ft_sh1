@@ -6,13 +6,13 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:16:54 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/19 11:33:16 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/21 13:03:50 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
 
-static t_bool							ft_verif(char *cmd)
+static t_bool					ft_verif(char *cmd)
 {
 	char								*tmp;
 
@@ -24,7 +24,7 @@ static t_bool							ft_verif(char *cmd)
 	return (SUCCESS);
 }
 
-void									ft_uenv(t_lst **env, char *cmd)
+void						ft_uenv(t_sh *shell, char *cmd)
 {
 	char								*t;
 	t_lst								*prec;
@@ -32,14 +32,16 @@ void									ft_uenv(t_lst **env, char *cmd)
 
 	if (ft_verif(cmd))
 	{
-		tmp = *env;
+		tmp = shell->env;
 		prec = NULL;
 		t = ft_strchr(cmd, ' ') + 1;
+		if (!ft_strncmp(t, "PATH", 4))
+			ft_flst(shell->path);
 		while (tmp)
 		{
 			if (!prec && !ft_strncmp(tmp->entry, t, ft_len(t, '=')))
 			{
-				*env= (*env)->next;
+				shell->env = shell->env->next;
 				return ;
 			}
 			if (prec && !ft_strncmp(tmp->entry, t, ft_len(t, '=')))

@@ -6,7 +6,7 @@
 #    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/04 09:54:26 by alegent           #+#    #+#              #
-#    Updated: 2015/05/19 16:26:13 by alegent          ###   ########.fr        #
+#    Updated: 2015/05/21 13:09:34 by alegent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC_NAME= main.c \
 	  ft_exit.c \
 	  ft_fork.c \
 	  ft_fctab.c \
+	  ft_flst.c \
 	  ft_gcmd.c \
 	  ft_genv.c \
 	  ft_glst.c \
