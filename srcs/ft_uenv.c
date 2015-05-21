@@ -6,13 +6,13 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:16:54 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/21 16:40:09 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/21 18:29:37 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
 
-static t_bool					ft_verif(char *cmd)
+static t_bool						ft_verif(char *cmd)
 {
 	char								*tmp;
 
@@ -24,7 +24,7 @@ static t_bool					ft_verif(char *cmd)
 	return (SUCCESS);
 }
 
-void						ft_uenv(t_sh *shell, char *cmd)
+void								ft_uenv(t_sh *shell, char *cmd)
 {
 	char								*t;
 	t_lst								*prec;

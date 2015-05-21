@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 12:14:34 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/21 16:37:07 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/21 18:27:08 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void					ft_exit(char *cmd)
 {
 	char				*tmp;
-	int				e;
+	int					e;
 
 	tmp = NULL;
 	if (!ft_strcmp(cmd, "exit"))
