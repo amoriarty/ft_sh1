@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:09:10 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/21 16:16:16 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/21 16:20:19 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void					ft_analyze(t_sh *shell, char *cmd)
 {
 	char				*pwd;
 
+	if (*cmd == '\0')
+		return ;
 	if (*cmd == ' ')
 		cmd++;
 	if (!ft_strncmp(cmd, "exit", 4))
