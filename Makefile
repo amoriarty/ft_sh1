@@ -6,7 +6,7 @@
 #    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/04 09:54:26 by alegent           #+#    #+#              #
-#    Updated: 2015/05/21 13:09:34 by alegent          ###   ########.fr        #
+#    Updated: 2015/05/21 17:36:01 by alegent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ LIB= -L libft/ -lft
 #Don't forget to add framework that you need !
 FRAMEWORK= 
 
-all: $(OGL) $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(LFT)
