@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 10:46:47 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/21 17:31:33 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/23 16:42:33 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void					ft_analyze(t_sh *shell, char *cmd);
 void					ft_sherror(char *error, char *cmd, t_bool i);
 void					ft_env(t_lst *env);
 void					ft_senv(t_sh *shell, char *cmd);
-void					ft_uenv(t_sh *shell, char *cmd);
+void					*ft_uenv(t_sh *shell, char *cmd);
 void					ft_cd(t_sh *shell, char *cmd);
 void					ft_handler(void);
 void					ft_exit(char *cmd);
