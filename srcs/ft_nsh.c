@@ -6,11 +6,27 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:15:13 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/27 11:23:58 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/27 11:35:47 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
+
+static void				ft_norme(t_sh *shell, char **env)
+{
+	char				*tmp;
+	char				**split;
+
+	shell->env = ft_glst(env);
+	if (!(tmp = ft_genv(shell->env, "PATH")))
+		shell->path = NULL;
+	else if ((split = ft_strsplit(tmp, ':')))
+	{
+		shell->path = ft_glst(split);
+		ft_fctab(split);
+		free(tmp);
+	}
+}
 
 t_sh					*ft_nsh(char **env)
 {
@@ -24,14 +40,8 @@ t_sh					*ft_nsh(char **env)
 		ft_sherror(NULL, NULL, TRUE);
 	if (env)
 	{
-		new->env = ft_glst(env);
-		if (!(tmp = ft_genv(new->env, "PATH")))
-			new->path = NULL;
-		else if ((split = ft_strsplit(tmp, ':')))
-			new->path = ft_glst(split);
+		ft_norme(new, env);
 		new->home = ft_genv(new->env, "HOME");
-		free(tmp);
-		ft_fctab(split);
 	}
 	else
 	{

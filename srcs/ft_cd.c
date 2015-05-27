@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:09:18 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/21 17:27:00 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/27 11:27:21 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,11 @@ void									ft_cd(t_sh *shell, char *cmd)
 	{
 		pwd = getcwd(NULL, 0);
 		path = ft_gpwd(shell, ft_strchr(cmd, ' '));
+		if (!access(path, F_OK) && access(path, X_OK))
+		{
+			ft_sherror("Permission denied", ft_strchr(cmd, ' ') + 1, FALSE);
+			return ;
+		}
 		if (chdir(path) == ERROR)
 		{
 			ft_sherror("No such directory.", ft_strchr(cmd, ' ') + 1, FALSE);
