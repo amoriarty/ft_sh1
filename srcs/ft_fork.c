@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:11:11 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/22 10:02:35 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/27 14:26:48 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,13 @@ void					ft_fork(t_sh *shell, char *cmd)
 		ft_sherror(NULL, NULL, FALSE);
 	else if (pid == 0)
 	{
+		if (cmd[0] == '/')
+		{
+			path = ft_strsub(cmd, 0, ft_len(cmd, ' '));
+			cmd = ft_strrchr(path, '/');
+		}
 		ft_vsplit(shell, (split = ft_strsplit(cmd, ' ')));
-		if (!(path = ft_gpath(shell, cmd))
+		if (!(path = (cmd[0] != '/') ? ft_gpath(shell, cmd) : path)
 				|| (execve(path, split, (env = ft_cenv(shell->env))) == -1))
 			ft_sherror("Command not found.", cmd, TRUE);
 	}
