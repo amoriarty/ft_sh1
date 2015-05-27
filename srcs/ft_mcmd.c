@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:14:45 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/21 16:15:41 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/27 11:17:40 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void								ft_mcmd(t_sh *shell, char *cmd)
 	i = -1;
 	split = ft_strsplit(cmd, ';');
 	while (split[++i])
-		ft_analyze(shell, split[i]);
+		ft_analyze(shell, ft_tcmd(split[i]));
 	ft_fctab(split);
 }

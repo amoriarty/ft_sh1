@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:15:13 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/23 14:11:36 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/27 11:23:58 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ t_sh					*ft_nsh(char **env)
 	if (env)
 	{
 		new->env = ft_glst(env);
-		tmp = ft_genv(new->env, "PATH");
-		if ((split = ft_strsplit(tmp, ':')))
+		if (!(tmp = ft_genv(new->env, "PATH")))
+			new->path = NULL;
+		else if ((split = ft_strsplit(tmp, ':')))
 			new->path = ft_glst(split);
 		new->home = ft_genv(new->env, "HOME");
 		free(tmp);

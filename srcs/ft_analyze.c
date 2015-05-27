@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:09:10 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/21 16:20:19 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/27 11:17:13 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void					ft_analyze(t_sh *shell, char *cmd)
 
 	if (*cmd == '\0')
 		return ;
-	if (*cmd == ' ')
-		cmd++;
 	if (!ft_strncmp(cmd, "exit", 4))
 		ft_exit(cmd);
 	else if (!ft_strcmp(cmd, "pwd"))
@@ -27,7 +25,7 @@ void					ft_analyze(t_sh *shell, char *cmd)
 		ft_putendl((pwd = getcwd(NULL, 0)));
 		free(pwd);
 	}
-	else if (!ft_strcmp(cmd, "env"))
+	else if (!ft_strncmp(cmd, "env", 3))
 		ft_env(shell->env);
 	else if (!ft_strncmp(cmd, "setenv", 6))
 		ft_senv(shell, cmd);
