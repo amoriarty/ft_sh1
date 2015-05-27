@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/14 10:46:47 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/23 16:42:33 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/27 11:56:27 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char					*ft_gpath(t_sh *shell, char *cmd);
 char					*ft_gcmd(char *cmd);
 char					*ft_tcmd(char *cmd);
 void					ft_inode(t_lst **lst, char *entry);
-void					ft_vcmd(char *cmd);
+t_bool					ft_vcmd(char *cmd);
 void					ft_fctab(char **tab);
 void					ft_mcmd(t_sh *shell, char *cmd);
 void					ft_fork(t_sh *shell, char *cmd);

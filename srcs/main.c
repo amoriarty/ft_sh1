@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:18:41 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/27 11:22:47 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/27 11:56:51 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ int										main(int ac, char **av, char **env)
 	ft_handler();
 	while (42)
 	{
-		cmd = ft_gcmd(NULL);
-		cmd = ft_tcmd(cmd);
-		ft_vcmd(cmd);
-		(ft_strchr(cmd, ';')) ? ft_mcmd(shell, cmd) : ft_analyze(shell, cmd);
+		if (ft_vcmd((cmd = ft_gcmd(NULL))))
+		{
+			cmd = ft_tcmd(cmd);
+			(ft_strchr(cmd, ';')) ? ft_mcmd(shell, cmd) : ft_analyze(shell, cmd);
+		}
 		free(cmd);
 	}
 	return (EXIT_SUCCESS);
