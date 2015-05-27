@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/19 10:12:40 by alegent           #+#    #+#             */
-/*   Updated: 2015/05/21 17:32:50 by alegent          ###   ########.fr       */
+/*   Updated: 2015/05/27 11:03:16 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@ char					*ft_gpath(t_sh *shell, char *cmd)
 		if (cmd[0] == '~')
 			cmd = ft_strjoin(shell->home, cmd);
 		if (cmd[0] == '/')
-		{
-			path = ft_strdup(cmd);
-			ft_bzero(ft_strchr(path, ' '), ft_strlen(ft_strchr(path, ' ')));
-		}
+			path = cmd;
 	}
 	else
 		path = ft_fpath(shell, ft_strsub(cmd, 0, ft_len(cmd, ' ')));
